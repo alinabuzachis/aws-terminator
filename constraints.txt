@@ -1,5 +1,5 @@
 # freeze pylint and its requirements for consistent test results
-ansible-core==2.13.5
+ansible-core==2.15.12
 astroid==2.12.12
 cffi==1.15.1
 cryptography==38.0.3
