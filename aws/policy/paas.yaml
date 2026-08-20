@@ -4,8 +4,7 @@ Statement:
   - Sid: AllowResourceRestrictedActionsWhichIncurFees
     Effect: Allow
     Action:
-      - bedrock:InvokeAgent
-      - bedrock:InvokeModel
+      - bedrock:Invoke*
       - eks:CreateCluster
       - eks:CreateNodegroup
       - eks:UpdateNodegroupConfig
@@ -34,8 +33,8 @@ Statement:
       - cloudfront:CreateCachePolicy
       - cloudfront:CreateInvalidation
       - cloudfront:CreateOriginRequestPolicy
-      - cloudfront:DeleteCloudFrontOriginAccessIdentity
       - cloudfront:DeleteCachePolicy
+      - cloudfront:DeleteCloudFrontOriginAccessIdentity
       - cloudfront:DeleteDistribution
       - cloudfront:DeleteOriginRequestPolicy
       - cloudfront:DeleteStreamingDistribution
@@ -45,16 +44,15 @@ Statement:
       - cloudfront:UpdateCloudFrontOriginAccessIdentity
       - cloudfront:UpdateDistribution
       - cloudfront:UpdateOriginRequestPolicy
+      - eks:CreateFargateProfile
       - eks:DeleteCluster
+      - eks:DeleteFargateProfile
+      - eks:DeleteNodegroup
       - eks:Describe*
       - eks:List*
-      - eks:CreateFargateProfile
-      - eks:DeleteFargateProfile
       - eks:TagResource
       - eks:UntagResource
-      - eks:DescribeNodegroup
       - eks:UpdateNodegroupVersion
-      - eks:DeleteNodegroup
       - elasticbeanstalk:CreateApplication
       - elasticbeanstalk:DeleteApplication
       - elasticbeanstalk:Describe*
@@ -114,16 +112,15 @@ Statement:
     Effect: Allow
     Action:
       - cloudfront:CreateDistribution
-      - cloudfront:CreateStreamingDistribution
-      - cloudfront:CreateStreamingDistributionWithTags
+      - cloudfront:CreateStreamingDistribution*
     Resource:
       - "*"
 
   - Sid: AllowUnrestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
-      - bedrock:ListFoundationModels
       - bedrock:GetFoundationModel
+      - bedrock:ListFoundationModels
       - cloudfront:CreateCloudFrontOriginAccessIdentity
       - cloudfront:Get*
       - cloudfront:List*
@@ -155,28 +152,27 @@ Statement:
   - Sid: AllowGlobalUnrestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
+      - ecs:DeregisterTaskDefinition
       - ecs:Describe*
       - ecs:List*
-      - ecs:TagResource
-      - ecs:UntagResource
       - ecs:PutAccountSetting
       - ecs:RegisterTaskDefinition
-      - ecs:DeregisterTaskDefinition
+      - ecs:TagResource
+      - ecs:UntagResource
     Resource:
       - "*"
 
   - Sid: AllowGlobalRestrictedResourceActionsWhichIncurFees
     Effect: Allow
     Action:
+      - ecs:*CapacityProvider*
+      - ecs:CreateService
+      - ecs:DeleteCluster
+      - ecs:DeleteService
       - ecs:RunTask
       - ecs:StartTask
       - ecs:StopTask
-      - ecs:DeleteCluster
-      - ecs:CreateService
-      - ecs:DeleteService
-      - ecs:UpdateService
       - ecs:UpdateCluster
-      - ecs:*CapacityProvider
-      - ecs:PutClusterCapacityProviders
+      - ecs:UpdateService
     Resource:
       - 'arn:aws:ecs:{{ aws_region }}:{{ aws_account_id }}:*'
