@@ -66,6 +66,11 @@ Statement:
       - backup:UntagResource
       - backup:UpdateBackupPlan
       - backup-storage:MountCapsule
+      - ecr:CreateRepository
+      - ecr:Describe*
+      - ecr:GetAuthorizationToken
+      - ecr:List*
+      - ecr:PutImageTagMutability
       - memorydb:Describe*
       - memorydb:List*
     Resource: "*"
@@ -103,3 +108,29 @@ Statement:
       - memorydb:TagResource
     Resource:
       - 'arn:aws:memorydb:{{ aws_region }}:{{ aws_account_id }}:*'
+
+  - Sid: AllowResourceRestrictedActionsWhichIncurFees
+    Effect: Allow
+    Action:
+      - ecr:CompleteLayerUpload
+      - ecr:InitiateLayerUpload
+      - ecr:PutImage
+      - ecr:UploadLayerPart
+    Resource:
+      - 'arn:aws:ecr:{{ aws_region }}:{{ aws_account_id }}:repository/*'
+
+  - Sid: AllowResourceRestrictedActionsWhichIncurNoFees
+    Effect: Allow
+    Action:
+      - ecr:BatchCheckLayerAvailability
+      - ecr:BatchDeleteImages
+      - ecr:DeleteLifecyclePolicy
+      - ecr:DeleteRepository
+      - ecr:DeleteRepositoryPolicy
+      - ecr:GetLifecyclePolicy
+      - ecr:GetRepositoryPolicy
+      - ecr:PutImageScanningConfiguration
+      - ecr:PutLifecyclePolicy
+      - ecr:SetRepositoryPolicy
+    Resource:
+      - 'arn:aws:ecr:{{ aws_region }}:{{ aws_account_id }}:repository/*'

@@ -10,13 +10,9 @@ Statement:
       - eks:CreateNodegroup
       - eks:UpdateNodegroupConfig
       - lambda:InvokeFunction
+      - lightsail:CreateInstanceSnapshot
       - lightsail:CreateInstances
       - lightsail:StartInstance
-      - lightsail:CreateInstanceSnapshot
-      - ecr:CompleteLayerUpload
-      - ecr:InitiateLayerUpload
-      - ecr:PutImage
-      - ecr:UploadLayerPart
     Resource:
       - 'arn:aws:bedrock:{{ aws_region }}:{{ aws_account_id }}:agent-alias/*'
       - 'arn:aws:bedrock:{{ aws_region }}::foundation-model/*'
@@ -24,7 +20,6 @@ Statement:
       - 'arn:aws:eks:{{ aws_region }}:{{ aws_account_id }}:nodegroup/*/*/*'
       - 'arn:aws:lambda:{{ aws_region }}:{{ aws_account_id }}:function:*'
       - 'arn:aws:lightsail:{{ aws_region }}:{{ aws_account_id }}:*'
-      - 'arn:aws:ecr:{{ aws_region }}:{{ aws_account_id }}:repository/*'
 
   - Sid: AllowResourceRestrictedActionsWhichIncurNoFees
     Effect: Allow
@@ -50,16 +45,6 @@ Statement:
       - cloudfront:UpdateCloudFrontOriginAccessIdentity
       - cloudfront:UpdateDistribution
       - cloudfront:UpdateOriginRequestPolicy
-      - ecr:DeleteLifecyclePolicy
-      - ecr:DeleteRepository
-      - ecr:DeleteRepositoryPolicy
-      - ecr:GetLifecyclePolicy
-      - ecr:GetRepositoryPolicy
-      - ecr:PutImageScanningConfiguration
-      - ecr:PutLifecyclePolicy
-      - ecr:SetRepositoryPolicy
-      - ecr:BatchDeleteImages
-      - ecr:BatchCheckLayerAvailability
       - eks:DeleteCluster
       - eks:Describe*
       - eks:List*
@@ -97,19 +82,13 @@ Statement:
       - lightsail:AllocateStaticIp
       - lightsail:CreateKeyPair
       - lightsail:DeleteInstance
-      - lightsail:DeleteKeyPair
-      - lightsail:GetInstance
-      - lightsail:GetInstances
-      - lightsail:GetKeyPairs
-      - lightsail:GetStaticIp
-      - lightsail:GetStaticIps
-      - lightsail:RebootInstance
-      - lightsail:StopInstance
-      - lightsail:ReleaseStaticIp
-      - lightsail:PutInstancePublicPorts
-      - lightsail:GetInstanceSnapshot
       - lightsail:DeleteInstanceSnapshot
-      - lightsail:GetInstanceSnapshots
+      - lightsail:DeleteKeyPair
+      - lightsail:Get*
+      - lightsail:PutInstancePublicPorts
+      - lightsail:RebootInstance
+      - lightsail:ReleaseStaticIp
+      - lightsail:StopInstance
       - sagemaker:CreateCodeRepository
       - sagemaker:DeleteCodeRepository
       - sagemaker:DescribeCodeRepository
@@ -122,7 +101,6 @@ Statement:
       - 'arn:aws:cloudfront::{{ aws_account_id }}:origin-access-identity/*'
       - 'arn:aws:cloudfront::{{ aws_account_id }}:origin-request-policy/*'
       - 'arn:aws:cloudfront::{{ aws_account_id }}:streaming-distribution/*'
-      - 'arn:aws:ecr:{{ aws_region }}:{{ aws_account_id }}:repository/*'
       - 'arn:aws:eks:{{ aws_region }}:{{ aws_account_id }}:cluster/*'
       - 'arn:aws:eks:{{ aws_region }}:{{ aws_account_id }}:fargateprofile/*/*/*'
       - 'arn:aws:eks:{{ aws_region }}:{{ aws_account_id }}:nodegroup/*/*/*'
@@ -149,11 +127,6 @@ Statement:
       - cloudfront:CreateCloudFrontOriginAccessIdentity
       - cloudfront:Get*
       - cloudfront:List*
-      - ecr:GetAuthorizationToken
-      - ecr:CreateRepository
-      - ecr:Describe*
-      - ecr:List*
-      - ecr:PutImageTagMutability
       - lambda:GetEventSourceMapping
       - lambda:List*
       - sagemaker:ListCodeRepositories
