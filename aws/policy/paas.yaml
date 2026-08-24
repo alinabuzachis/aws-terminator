@@ -26,8 +26,6 @@ Statement:
       - bedrock:CreateAgent*
       - bedrock:DeleteAgent*
       - bedrock:DisableAgentActionGroup
-      - bedrock:GetAgent*
-      - bedrock:ListAgent*
       - bedrock:PrepareAgent
       - bedrock:UpdateAgent*
       - cloudfront:CreateCachePolicy
@@ -119,8 +117,8 @@ Statement:
   - Sid: AllowUnrestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
-      - bedrock:GetFoundationModel
-      - bedrock:ListFoundationModels
+      - bedrock:Get*
+      - bedrock:List*
       - cloudfront:CreateCloudFrontOriginAccessIdentity
       - cloudfront:Get*
       - cloudfront:List*

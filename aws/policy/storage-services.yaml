@@ -68,7 +68,7 @@ Statement:
       - backup-storage:MountCapsule
       - ecr:CreateRepository
       - ecr:Describe*
-      - ecr:GetAuthorizationToken
+      - ecr:Get*
       - ecr:List*
       - ecr:PutImageTagMutability
       - memorydb:Describe*
@@ -127,8 +127,6 @@ Statement:
       - ecr:DeleteLifecyclePolicy
       - ecr:DeleteRepository
       - ecr:DeleteRepositoryPolicy
-      - ecr:GetLifecyclePolicy
-      - ecr:GetRepositoryPolicy
       - ecr:PutImageScanningConfiguration
       - ecr:PutLifecyclePolicy
       - ecr:SetRepositoryPolicy
