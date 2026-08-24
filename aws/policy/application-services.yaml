@@ -35,7 +35,8 @@ Statement:
       - events:RemoveTargets
       - kinesis:Describe*
       - kinesis:List*
-      # logs permissions moved back from security-services.yaml to free up space there
+      # logs permissions were moved to security-services.yaml in a0ab01a to free
+      # space here, and moved back to free space there (see PR #343 discussion).
       - logs:List*
       - mq:Describe*
       - mq:List*
@@ -116,6 +117,8 @@ Statement:
       - kinesis:RemoveTagsFromStream
       - kinesis:StartStreamEncryption
       - kinesis:StopStreamEncryption
+      # logs permissions were moved to security-services.yaml in a0ab01a to free
+      # space here, and moved back to free space there (see PR #343 discussion).
       - logs:AssociateKmsKey
       - logs:CreateLogGroup
       - logs:DeleteLogGroup
