@@ -146,8 +146,8 @@ Statement:
       - autoscaling:CompleteLifecycleAction
       - autoscaling:CreateOrUpdateTags
       - autoscaling:Delete*
-      - autoscaling:DetachLoadBalancerTargetGroups
       - autoscaling:DetachLoadBalancers
+      - autoscaling:DetachLoadBalancerTargetGroups
       - autoscaling:DisableMetricsCollection
       - autoscaling:PutLifecycleHook
       - autoscaling:PutScalingPolicy

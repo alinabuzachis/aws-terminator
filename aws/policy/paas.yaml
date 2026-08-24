@@ -9,8 +9,8 @@ Statement:
       - eks:CreateNodegroup
       - eks:UpdateNodegroupConfig
       - lambda:InvokeFunction
-      - lightsail:CreateInstanceSnapshot
       - lightsail:CreateInstances
+      - lightsail:CreateInstanceSnapshot
       - lightsail:StartInstance
     Resource:
       - 'arn:aws:bedrock:{{ aws_region }}:{{ aws_account_id }}:agent-alias/*'
@@ -132,8 +132,8 @@ Statement:
     Effect: Allow
     Action:
       - lambda:CreateEventSourceMapping
-      - lambda:UpdateEventSourceMapping
       - lambda:DeleteEventSourceMapping
+      - lambda:UpdateEventSourceMapping
     Resource:
       - "*"
     Condition:

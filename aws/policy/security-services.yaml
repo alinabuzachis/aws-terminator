@@ -41,8 +41,8 @@ Statement:
   - Sid: RegionalUnrestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
-      - iam:GetUser
       - acm:List*
+      - iam:GetUser
     Resource: "*"
     Condition:
       StringEquals:
