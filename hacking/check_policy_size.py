@@ -37,7 +37,7 @@ def main() -> int:
 
         if size > THRESHOLD:
             status = 'OVER' if size > AWS_LIMIT else 'TIGHT'
-            has_error = size > AWS_LIMIT
+            has_error |= size > AWS_LIMIT
         elif remaining < 500:
             status = 'WARN'
         else:
