@@ -102,12 +102,12 @@ Statement:
       - secretsmanager:CreateSecret
       - secretsmanager:Delete*
       - secretsmanager:Get*
+      - secretsmanager:PutResourcePolicy
+      - secretsmanager:RemoveRegionsFromReplication
       - secretsmanager:RotateSecret
       - secretsmanager:TagResource
       - secretsmanager:UntagResource
       - secretsmanager:UpdateSecret
-      - secretsmanager:PutResourcePolicy
-      - secretsmanager:RemoveRegionsFromReplication
     Resource:
       - 'arn:aws:iam::{{ aws_account_id }}:server-certificate/ansible-test-*'
       - 'arn:aws:secretsmanager:{{ aws_region }}:{{ aws_account_id }}:secret:ansible-test*'
@@ -123,11 +123,11 @@ Statement:
       - acm:RemoveTagsFromCertificate
       - acm:RenewCertificate
       - acm:RequestCertificate
+      - iam:*InstanceProfile
       - iam:CreateRole
       - iam:CreateSAMLProvider
       - iam:DeleteRole
       - iam:DeleteSAMLProvider
-      - iam:*InstanceProfile
       - iam:GetSAMLProvider
       - iam:GetServerCertificate
       - iam:PassRole

@@ -9,8 +9,8 @@ Statement:
       - autoscaling:AttachInstances
       - autoscaling:CreateAutoScalingGroup
       - autoscaling:CreateLaunchConfiguration
-      - autoscaling:UpdateAutoScalingGroup
       - autoscaling:DetachInstances
+      - autoscaling:UpdateAutoScalingGroup
       - ec2:RunInstances
       - ec2:StartInstances
     Resource:
@@ -114,13 +114,13 @@ Statement:
       - autoscaling:ResumeProcesses
       - autoscaling:SuspendProcesses
       - ec2:Describe*
-      - elasticloadbalancing:DeleteRule
       - elasticloadbalancing:DeleteListener
-      - elasticloadbalancing:Describe*
+      - elasticloadbalancing:DeleteRule
       - elasticloadbalancing:DeregisterTargets
+      - elasticloadbalancing:Describe*
       - elasticloadbalancing:ModifyListener
-      - elasticloadbalancing:ModifyTargetGroupAttributes
       - elasticloadbalancing:ModifyRule
+      - elasticloadbalancing:ModifyTargetGroupAttributes
       - elasticloadbalancing:SetIpAddressType
       - elasticloadbalancing:SetRulePriorities
     Resource:
@@ -146,15 +146,15 @@ Statement:
       - autoscaling:CompleteLifecycleAction
       - autoscaling:CreateOrUpdateTags
       - autoscaling:Delete*
-      - autoscaling:DetachLoadBalancers
       - autoscaling:DetachLoadBalancerTargetGroups
+      - autoscaling:DetachLoadBalancers
       - autoscaling:DisableMetricsCollection
+      - autoscaling:PutLifecycleHook
       - autoscaling:PutScalingPolicy
       - autoscaling:PutScheduledUpdateGroupAction
-      - autoscaling:PutLifecycleHook
-      - autoscaling:StartInstanceRefresh
       - autoscaling:SetInstanceHealth
       - autoscaling:SetInstanceProtection
+      - autoscaling:StartInstanceRefresh
       - autoscaling:TerminateInstanceInAutoScalingGroup
       - ec2:DeleteVolume
       - elasticloadbalancing:AddListenerCertificates
@@ -172,9 +172,9 @@ Statement:
       - elasticloadbalancing:DisableAvailabilityZonesForLoadBalancer
       - elasticloadbalancing:EnableAvailabilityZonesForLoadBalancer
       - elasticloadbalancing:ModifyLoadBalancerAttributes
-      - elasticloadbalancing:RemoveTags
       - elasticloadbalancing:RegisterInstancesWithLoadBalancer
       - elasticloadbalancing:RegisterTargets
+      - elasticloadbalancing:RemoveTags
       - elasticloadbalancing:SetLoadBalancer*
       - elasticloadbalancing:SetSecurityGroups
       - elasticloadbalancing:SetWebACL

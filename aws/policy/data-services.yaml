@@ -6,17 +6,17 @@ Statement:
       - dms:CreateEndpoint
       - dms:Describe*
       - dms:List*
-      - dynamodb:Get*
       - dynamodb:Describe*
+      - dynamodb:Get*
       - dynamodb:List*
       - dynamodb:Query
       - dynamodb:Scan
       - elasticache:Describe*
       - elasticache:List*
       - glacier:List*
-      - glue:Get*
       - glue:CreateConnection
       - glue:DeleteConnection
+      - glue:Get*
       - glue:UpdateConnection
       - rds:Describe*
       - rds:List*
@@ -51,10 +51,52 @@ Statement:
       - elasticache:ModifyCacheParameterGroup
       - elasticache:ModifyCacheSubnetGroup
       - elasticache:RemoveTagsFromResource
+      - glacier:AddTagsToVault
       - glacier:CreateVault
       - glacier:DeleteVault
-      - glacier:AddTagsToVault
       - glacier:RemoveTagsFromVault
+      - rds:AddTagsToResource
+      - rds:CancelExportTask
+      - rds:CopyDBClusterSnapshot
+      - rds:CopyDBSnapshot
+      - rds:CreateDBClusterParameterGroup
+      - rds:CreateDBClusterSnapshot
+      - rds:CreateDBInstance
+      - rds:CreateDBInstanceReadReplica
+      - rds:CreateDBParameterGroup
+      - rds:CreateDBSnapshot
+      - rds:CreateDBSubnetGroup
+      - rds:CreateOptionGroup
+      - rds:DeleteDBCluster
+      - rds:DeleteDBClusterParameterGroup
+      - rds:DeleteDBClusterSnapshot
+      - rds:DeleteDBInstance
+      - rds:DeleteDBParameterGroup
+      - rds:DeleteDBSnapshot
+      - rds:DeleteDBSubnetGroup
+      - rds:DeleteOptionGroup
+      - rds:ModifyDBCluster
+      - rds:ModifyDBClusterParameterGroup
+      - rds:ModifyDBInstance
+      - rds:ModifyDBParameterGroup
+      - rds:ModifyDBSubnetGroup
+      - rds:ModifyOptionGroup
+      - rds:PromoteReadReplica
+      - rds:PromoteReadReplicaDBCluster
+      - rds:RebootDBCluster
+      - rds:RebootDBInstance
+      - rds:RemoveTagsFromResource
+      - rds:RestoreDBClusterFromS3
+      - rds:RestoreDBClusterFromSnapshot
+      - rds:RestoreDBClusterToPointInTime
+      - rds:RestoreDBInstanceFromDBSnapshot
+      - rds:RestoreDBInstanceFromS3
+      - rds:RestoreDBInstanceToPointInTime
+      - rds:StartDBCluster
+      - rds:StartDBInstance
+      - rds:StartExportTask
+      - rds:StopDBCluster
+      - rds:StopDBInstance
       - redshift:CreateClusterSubnetGroup
       - redshift:CreateTags
       - redshift:DeleteCluster
@@ -63,81 +105,38 @@ Statement:
       - redshift:ModifyCluster
       - redshift:ModifyClusterSubnetGroup
       - redshift:RebootCluster
-      - rds:AddTagsToResource
-      - rds:CreateDBParameterGroup
-      - rds:CreateDBClusterParameterGroup
-      - rds:CreateDBSubnetGroup
-      - rds:DeleteDBCluster
-      - rds:DeleteDBParameterGroup
-      - rds:DeleteDBClusterParameterGroup
-      - rds:DeleteDBSubnetGroup
-      - rds:RestoreDBInstanceToPointInTime
-      - rds:RestoreDBInstanceFromDBSnapshot
-      - rds:RestoreDBInstanceFromS3
-      - rds:CreateDBInstanceReadReplica
-      - rds:CreateDBInstance
-      - rds:ModifyDBInstance
-      - rds:DeleteDBInstance
-      - rds:StopDBCluster
-      - rds:StopDBInstance
-      - rds:StartDBCluster
-      - rds:StartDBInstance
-      - rds:PromoteReadReplica
-      - rds:RebootDBCluster
-      - rds:RebootDBInstance
-      - rds:ModifyDBCluster
-      - rds:ModifyDBParameterGroup
-      - rds:ModifyDBClusterParameterGroup
-      - rds:ModifyDBSubnetGroup
-      - rds:RemoveTagsFromResource
-      - rds:CreateOptionGroup
-      - rds:ModifyOptionGroup
-      - rds:DeleteOptionGroup
-      - rds:CreateDBClusterSnapshot
-      - rds:DeleteDBClusterSnapshot
-      - rds:CreateDBSnapshot
-      - rds:DeleteDBSnapshot
-      - rds:CopyDBSnapshot
-      - rds:StartExportTask
-      - rds:CancelExportTask
-      - rds:RestoreDBClusterToPointInTime
-      - rds:RestoreDBClusterFromSnapshot
-      - rds:RestoreDBClusterFromS3
-      - rds:PromoteReadReplicaDBCluster
-      - rds:CopyDBClusterSnapshot
     Resource:
       - 'arn:aws:dms:{{ aws_region }}:{{ aws_account_id }}:endpoint:*'
       - 'arn:aws:dms:{{ aws_region }}:{{ aws_account_id }}:subgrp:*'
       - 'arn:aws:dynamodb:{{ aws_region }}:{{ aws_account_id }}:table/*'
       - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
-      - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:subnetgroup:*'
       - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:parametergroup:*'
       - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:securitygroup:*'
+      - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:subnetgroup:*'
       - 'arn:aws:glacier:{{ aws_region }}:{{ aws_account_id }}:vaults/*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster-pg:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster-snapshot:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:db:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:og:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:pg:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:snapshot:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:subgrp:*'
       - 'arn:aws:redshift:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
       - 'arn:aws:redshift:{{ aws_region }}:{{ aws_account_id }}:subnetgroup:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:subgrp:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:db:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:pg:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster-pg:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:og:*'
-      - 'arn:aws:dms:{{ aws_region }}:{{ aws_account_id }}:endpoint:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:snapshot:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster-snapshot:*'
   - Sid: AllowGlobalRestrictedResourceActionsWhichIncurFees
     Effect: Allow
     Action:
-      - rds:CreateDBCluster
       - elasticache:CreateCacheCluster
+      - rds:CreateDBCluster
       - redshift:CreateCluster
     Resource:
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
-      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:subgrp:*'
       - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
-      - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:subnetgroup:*'
       - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:parametergroup:*'
       - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:securitygroup:*'
+      - 'arn:aws:elasticache:{{ aws_region }}:{{ aws_account_id }}:subnetgroup:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
+      - 'arn:aws:rds:{{ aws_region }}:{{ aws_account_id }}:subgrp:*'
       - 'arn:aws:redshift:{{ aws_region }}:{{ aws_account_id }}:cluster:*'
   # This allows AWS Services to autmatically create their Default Service Linked Roles
   # These have fixed policies and can only be assumed by the service itself.
@@ -163,8 +162,8 @@ Statement:
       - kafka:Describe*
       - kafka:Get*
       - kafka:List*
-      - kafka:TagResource
       - kafka:RebootBroker
+      - kafka:TagResource
       - kafka:UntagResource
       - kafka:UpdateBrokerCount
       - kafka:UpdateBrokerStorage

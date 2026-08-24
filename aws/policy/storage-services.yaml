@@ -66,6 +66,11 @@ Statement:
       - backup:UntagResource
       - backup:UpdateBackupPlan
       - backup-storage:MountCapsule
+      - ecr:CreateRepository
+      - ecr:Describe*
+      - ecr:Get*
+      - ecr:List*
+      - ecr:PutImageTagMutability
       - memorydb:Describe*
       - memorydb:List*
     Resource: "*"
@@ -90,16 +95,40 @@ Statement:
   - Sid: AllowRegionalRestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
+      - memorydb:CreateACL
       - memorydb:CreateParameterGroup
       - memorydb:CreateSubnetGroup
       - memorydb:CreateUser
-      - memorydb:CreateACL
       - memorydb:DeleteACL
       - memorydb:DeleteCluster
       - memorydb:DeleteParameterGroup
-      - memorydb:DeleleSnapshot
+      - memorydb:DeleteSnapshot
       - memorydb:DeleteSubnetGroup
       - memorydb:DeleteUser
       - memorydb:TagResource
     Resource:
       - 'arn:aws:memorydb:{{ aws_region }}:{{ aws_account_id }}:*'
+
+  - Sid: AllowResourceRestrictedActionsWhichIncurFees
+    Effect: Allow
+    Action:
+      - ecr:CompleteLayerUpload
+      - ecr:InitiateLayerUpload
+      - ecr:PutImage
+      - ecr:UploadLayerPart
+    Resource:
+      - 'arn:aws:ecr:{{ aws_region }}:{{ aws_account_id }}:repository/*'
+
+  - Sid: AllowResourceRestrictedActionsWhichIncurNoFees
+    Effect: Allow
+    Action:
+      - ecr:BatchCheckLayerAvailability
+      - ecr:BatchDeleteImages
+      - ecr:DeleteLifecyclePolicy
+      - ecr:DeleteRepository
+      - ecr:DeleteRepositoryPolicy
+      - ecr:PutImageScanningConfiguration
+      - ecr:PutLifecyclePolicy
+      - ecr:SetRepositoryPolicy
+    Resource:
+      - 'arn:aws:ecr:{{ aws_region }}:{{ aws_account_id }}:repository/*'
