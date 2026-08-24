@@ -88,7 +88,6 @@ Statement:
       - kms:UpdateGrant
       - kms:UpdateKeyDescription
       - kms:Verify
-      - logs:List*
       - secretsmanager:Describe*
       - secretsmanager:GetRandomPassword
       - secretsmanager:List*
@@ -134,16 +133,6 @@ Statement:
       - iam:UpdateSAMLProvider
       - iam:UpdateServerCertificate
       - kms:Decrypt
-      - logs:AssociateKmsKey
-      - logs:CreateLogGroup
-      - logs:DeleteLogGroup
-      - logs:DeleteMetricFilter
-      - logs:Describe*
-      - logs:DisassociateKmsKey
-      - logs:PutMetricFilter
-      - logs:PutRetentionPolicy
-      - logs:Tag*
-      - logs:Untag*
       - sts:AssumeRole
     Resource:
       - 'arn:aws:acm:{{ aws_region }}:{{ aws_account_id }}:certificate/*'
@@ -155,8 +144,6 @@ Statement:
       - 'arn:aws:iam::{{ aws_account_id }}:role/dms-vpc-role'
       - 'arn:aws:iam::{{ aws_account_id }}:role/rds_export_task'
       - 'arn:aws:kms:{{ aws_region }}:{{ aws_account_id }}:key/ansible-test-*'
-      - 'arn:aws:logs:{{ aws_region }}:{{ aws_account_id }}:log-group:*'
-      - 'arn:aws:logs:{{ aws_region }}:{{ aws_account_id }}:log-group:ansible-test*'
       - 'arn:aws:iam::{{ aws_account_id }}:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS'
 
   # This allows AWS Services to automatically create their Default Service Linked Roles
