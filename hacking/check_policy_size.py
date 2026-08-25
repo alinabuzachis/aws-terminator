@@ -33,7 +33,7 @@ def main() -> int:
         rendered = render_policy(path)
         size = len(rendered)
         remaining = AWS_LIMIT - size
-        pct = size / AWS_LIMIT * 100
+        
 
         if size > THRESHOLD:
             status = 'OVER' if size > AWS_LIMIT else 'TIGHT'
