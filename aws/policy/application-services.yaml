@@ -35,6 +35,9 @@ Statement:
       - events:RemoveTargets
       - kinesis:Describe*
       - kinesis:List*
+      # logs permissions were moved to security-services.yaml in a0ab01a to free
+      # space here, and moved back to free space there (see PR #343 discussion).
+      - logs:List*
       - mq:Describe*
       - mq:List*
       - ses:CreateReceiptRuleSet
@@ -114,6 +117,18 @@ Statement:
       - kinesis:RemoveTagsFromStream
       - kinesis:StartStreamEncryption
       - kinesis:StopStreamEncryption
+      # logs permissions were moved to security-services.yaml in a0ab01a to free
+      # space here, and moved back to free space there (see PR #343 discussion).
+      - logs:AssociateKmsKey
+      - logs:CreateLogGroup
+      - logs:DeleteLogGroup
+      - logs:DeleteMetricFilter
+      - logs:Describe*
+      - logs:DisassociateKmsKey
+      - logs:PutMetricFilter
+      - logs:PutRetentionPolicy
+      - logs:Tag*
+      - logs:Untag*
       - mq:CreateTags
       - SNS:CreateTopic
       - SNS:DeleteTopic
@@ -139,6 +154,8 @@ Statement:
       - 'arn:aws:glue:{{ aws_region }}:{{ aws_account_id }}:crawler/*'
       - 'arn:aws:glue:{{ aws_region }}:{{ aws_account_id }}:job/*'
       - 'arn:aws:kinesis:{{ aws_region }}:{{ aws_account_id }}:stream/*'
+      - 'arn:aws:logs:{{ aws_region }}:{{ aws_account_id }}:log-group:*'
+      - 'arn:aws:logs:{{ aws_region }}:{{ aws_account_id }}:log-group:ansible-test*'
       - 'arn:aws:mq:{{ aws_region }}:{{ aws_account_id }}:*'
       - 'arn:aws:sns:{{ aws_region }}:{{ aws_account_id }}:*'
       - 'arn:aws:ssm:{{ aws_region }}:{{ aws_account_id }}:document/*'
