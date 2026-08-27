@@ -3,6 +3,37 @@ Statement:
   - Sid: AllowGlobalUnrestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
+      - backup-storage:MountCapsule
+      - backup:CreateBackupPlan
+      - backup:CreateBackupSelection
+      - backup:CreateBackupVault
+      - backup:DeleteBackupPlan
+      - backup:DeleteBackupSelection
+      - backup:DeleteBackupVault
+      - backup:Describe*
+      - backup:GetBackup*
+      - backup:List*
+      - backup:TagResource
+      - backup:UntagResource
+      - backup:UpdateBackupPlan
+      - ecr:CreateRepository
+      - ecr:Describe*
+      - ecr:Get*
+      - ecr:List*
+      - ecr:PutImageTagMutability
+      - elasticfilesystem:CreateFileSystem
+      - elasticfilesystem:CreateMountTarget
+      - elasticfilesystem:CreateTags
+      - elasticfilesystem:DeleteFileSystem
+      - elasticfilesystem:DeleteMountTarget
+      - elasticfilesystem:Describe*
+      - elasticfilesystem:List*
+      - elasticfilesystem:PutLifecycleConfiguration
+      - elasticfilesystem:TagResource
+      - elasticfilesystem:UntagResource
+      - elasticfilesystem:UpdateFileSystem
+      - memorydb:Describe*
+      - memorydb:List*
       - s3:CreateAccessPoint*
       - s3:CreateBucket
       - s3:DeleteAccessPoint*
@@ -26,7 +57,6 @@ Statement:
       - s3:PutBucketCors
       - s3:PutBucketLogging
       - s3:PutBucketNotification
-      - s3:PutBucketWebsite
       - s3:PutBucketObjectLockConfiguration
       - s3:PutBucketOwnershipControls
       - s3:PutBucketPolicy
@@ -34,6 +64,7 @@ Statement:
       - s3:PutBucketRequestPayment
       - s3:PutBucketTagging
       - s3:PutBucketVersioning
+      - s3:PutBucketWebsite
       - s3:PutEncryptionConfiguration
       - s3:PutInventoryConfiguration
       - s3:PutLifecycleConfiguration
@@ -42,37 +73,6 @@ Statement:
       - s3:PutObjectTagging
       - s3:PutObjectVersionTagging
       - s3:PutReplicationConfiguration
-      - elasticfilesystem:CreateFileSystem
-      - elasticfilesystem:CreateMountTarget
-      - elasticfilesystem:CreateTags
-      - elasticfilesystem:DeleteFileSystem
-      - elasticfilesystem:DeleteMountTarget
-      - elasticfilesystem:Describe*
-      - elasticfilesystem:List*
-      - elasticfilesystem:PutLifecycleConfiguration
-      - elasticfilesystem:TagResource
-      - elasticfilesystem:UntagResource
-      - elasticfilesystem:UpdateFileSystem
-      - backup:CreateBackupPlan
-      - backup:CreateBackupSelection
-      - backup:CreateBackupVault
-      - backup:DeleteBackupPlan
-      - backup:DeleteBackupSelection
-      - backup:DeleteBackupVault
-      - backup:Describe*
-      - backup:GetBackup*
-      - backup:List*
-      - backup:TagResource
-      - backup:UntagResource
-      - backup:UpdateBackupPlan
-      - backup-storage:MountCapsule
-      - ecr:CreateRepository
-      - ecr:Describe*
-      - ecr:Get*
-      - ecr:List*
-      - ecr:PutImageTagMutability
-      - memorydb:Describe*
-      - memorydb:List*
     Resource: "*"
 
   - Sid: AllowGlobalUnrestrictedResourceActionsWhichIncurFees

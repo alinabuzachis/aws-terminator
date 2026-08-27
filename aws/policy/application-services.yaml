@@ -13,7 +13,6 @@ Statement:
       - cloudformation:Get*
       - cloudformation:List*
       - cloudformation:UpdateResource
-      ###
       - cloudwatch:Describe*
       - codebuild:BatchGetProjects
       - codebuild:List*
@@ -56,6 +55,8 @@ Statement:
       - ses:VerifyDomainDkim
       - ses:VerifyDomainIdentity
       - ses:VerifyEmailIdentity
+      - SNS:Get*
+      - SNS:List*
       - sqs:CreateQueue
       - sqs:DeleteQueue
       - sqs:Get*
@@ -80,8 +81,6 @@ Statement:
       - ssmmessages:CreateDataChannel
       - ssmmessages:OpenControlChannel
       - ssmmessages:OpenDataChannel
-      - SNS:Get*
-      - SNS:List*
       - states:Describe*
       - states:List*
     Resource: "*"
