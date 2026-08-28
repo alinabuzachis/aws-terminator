@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta
 
+import botocore.exceptions
+
 from . import DbTerminator, Terminator
 
 
@@ -435,3 +437,37 @@ class SageMakerCodeRepository(Terminator):
 
     def terminate(self):
         self.client.delete_code_repository(CodeRepositoryName=self.name)
+
+
+class SageMakerImage(Terminator):
+    @staticmethod
+    def create(credentials):
+        def _paginate_list_images(client):
+            images = client.get_paginator('list_images').paginate().build_full_result()['Images']
+
+            return [] if not images else images
+
+        return Terminator._create(credentials, SageMakerImage, 'sagemaker', _paginate_list_images)
+
+    @property
+    def created_time(self):
+        return self.instance.get('CreationTime')
+
+    @property
+    def id(self):
+        return self.instance['ImageArn']
+
+    @property
+    def name(self):
+        return self.instance['ImageName']
+
+    @property
+    def ignore(self) -> bool:
+        return self.instance.get('ImageStatus') in ('CREATING', 'UPDATING', 'DELETING')
+
+    def terminate(self):
+        try:
+            self.client.delete_image(ImageName=self.name)
+        except botocore.exceptions.ClientError as ex:
+            if not ex.response['Error']['Code'] == 'ResourceInUse':
+                raise
