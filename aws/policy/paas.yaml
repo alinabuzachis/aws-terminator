@@ -70,9 +70,6 @@ Statement:
   - Sid: AllowGlobalRestrictedResourceActionsWhichIncurNoFees
     Effect: Allow
     Action:
-      # Matches Create/Delete/UpdateImage; DescribeImage is covered by sagemaker:Describe*.
-      # ListImages does not match (ends in "Images"). *ImageVersion actions end in "Version"
-      #- sagemaker:*Image
       - bedrock:CreateAgent*
       - bedrock:DeleteAgent*
       - bedrock:DisableAgentActionGroup
@@ -136,6 +133,9 @@ Statement:
       # Matches Create/Delete/UpdateCodeRepository; DescribeCodeRepository is covered
       # by sagemaker:Describe*. ListCodeRepositories does not match (ends in "Repositories")
       - sagemaker:*CodeRepository
+      # Matches Create/Delete/UpdateImage; DescribeImage is covered by sagemaker:Describe*.
+      # ListImages does not match (ends in "Images"). *ImageVersion actions end in "Version"
+      - sagemaker:*Image
       # Matches AddTags and DeleteTags; ListTags also matches but is already
       # covered by sagemaker:List* in unrestricted (IAM action matching is case-insensitive)
       - sagemaker:*Tags
